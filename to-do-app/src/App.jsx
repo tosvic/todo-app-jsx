@@ -14,7 +14,7 @@ function App() {
     // console.log(`can you see me: ${task}`)
     setTodos(oldTodos => {
       setTask('')
-      return [...oldTodos, {todo: task, id: globalID }]
+      return [...oldTodos, {todo: task, id: globalID++ }]
     })
   }
 
@@ -28,6 +28,12 @@ function App() {
   //     return [...oldTodos, task]
   //   })
   // }
+
+
+  // delete function
+  function deleteItem(itemID) {
+    setTodos(oldTodos => oldTodos.filter(item => item.id !== itemID))
+  }
 
 
   function tryKey(e) {
@@ -67,8 +73,9 @@ function App() {
 
         <ul className='mt-4 pl-2'>
           {todos.map((item, index) => {
-            return <div key={index}> 
+            return <div key={item.id}> 
               <li>{item.todo}</li>
+              <button className='bg-black px-6 py-2' onClick={() => deleteItem (item.id)}>del</button>
             </div>
           })}
         </ul>
