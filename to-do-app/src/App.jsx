@@ -2,9 +2,11 @@
 import React, { useState } from 'react'
 import './App.css'
 
+let globalID = 0
+
 function App() {
 
-  const [todos, setTodos] = useState([''])
+  const [todos, setTodos] = useState([])
 
   const [task, setTask] = useState('')
 
@@ -12,9 +14,11 @@ function App() {
     // console.log(`can you see me: ${task}`)
     setTodos(oldTodos => {
       setTask('')
-      return [...oldTodos, task]
+      return [...oldTodos, {todo: task, id: globalID }]
     })
   }
+
+
 
   // for form
   // function createTodo(event) {
@@ -62,8 +66,10 @@ function App() {
         */}
 
         <ul className='mt-4 pl-2'>
-          {todos.map(todo => {
-            return <li>{todo}</li>
+          {todos.map((item, index) => {
+            return <div key={index}> 
+              <li>{item.todo}</li>
+            </div>
           })}
         </ul>
 
