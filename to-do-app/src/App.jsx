@@ -16,6 +16,16 @@ function App() {
     })
   }
 
+  // for form
+  // function createTodo(event) {
+  //  event.preventDefault()
+  //   setTodos(oldTodos => {
+  //     setTask('')
+  //     return [...oldTodos, task]
+  //   })
+  // }
+
+
   function tryKey(e) {
     // console.log('Event', e);
     if (e.keyCode === 13) {
@@ -36,6 +46,20 @@ function App() {
             setTask(e.target.value)
           }} />
         <button onClick={createTodo}>Add Task</button>
+
+{/* Form Handling well optimized */}
+        {/* 
+        <form onSubmit={createTodo}>
+        <input className='mt-4 border-2 px-8 py-2 rounded text-black' 
+          type="text"
+          value={task}
+          onChange={e => {
+            setTask(e.target.value)
+          }} />
+        <button type='submit'>Add Task</button> 
+        </form>
+        
+        */}
 
         <ul className='mt-4 pl-2'>
           {todos.map(todo => {
